@@ -1,0 +1,15 @@
+.myLottoContainer{ position: relative;}
+
+.howManyTickets{position: relative; margin-top: 8px; padding-left: 6px; font-size: .9rem; color: #666;}
+.howManyTickets:before{ content: ''; position: absolute; top: 6px; left: 0; width: 3px; height: 65%; background-color:#00bcd4;}
+.howManyTickets .point{color: #00bcd4; font-weight: 500;}
+
+.myLottoTickets{margin-top: 8px;}
+.myLottoTickets.grid{display: block;}
+.myLottoTickets.list{display: flex;}
+.myLottoTickets li{display: flex; align-items: center; margin: 2px 0;}
+.myLottoTickets li span.lottoIcon{margin-right: 10px;font-size: 1.8rem;}
+.myLottoTickets li .myNumber .num{display: inline-block; margin-right: 3px; padding-top: 2px; width: 28px; height: 28px; font-size: .9rem; vertical-align: top; text-align: center; color: #fff; background-color: #7a7a7a; border-radius: 50%;}
+.myLottoTickets li .myNumber .num:last-child{background-color: #00bcd4; }
+
+

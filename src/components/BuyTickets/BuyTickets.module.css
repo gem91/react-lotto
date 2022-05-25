@@ -1,0 +1,9 @@
+.inputContainer{margin-top: 6px; display: flex;}
+input{margin-right: 1px; padding: 4px 10px; width: 80%; font-size: 1rem; border: 1px solid #ddd; border-radius: 2px;}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.buttonSubmit{overflow: hidden; width: 20%; color: #fff; font-size: 1rem; border: 1px solid #dfdfdf;border-radius: 3px; background-color: #00bcd4;transition: all .3s ease-in-out;}
+.buttonSubmit:hover{ background-color: #f3a408;}

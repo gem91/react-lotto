@@ -1,0 +1,14 @@
+.winContainer{margin-top: 20px;width: 100%;}
+.winNotice{font-size: 1rem;}
+.point{color: #00bcd4; font-weight: 500;}
+
+.winNumbers{display: flex; justify-content: space-between; margin-top: 15px;}
+.winNumbers input{width: 50px;}
+.winInputArea{display: flex; flex-direction: column;width: 80%;}
+.winInputs{display: flex; flex-direction: row; justify-content: space-between;}
+
+.bonusArea{width: 15%;}
+.bonusInput{display: flex; flex-direction: column;align-items: center;}
+
+.winTitle{margin-bottom: 10px; font-size: .85rem; font-weight: 500; text-align: center;}
+.escapeDobby{display: flex; justify-content: center; margin: 25px auto 0; padding: 10px 20px; color: #fff; font-weight: 500; font-size: 1rem; border-radius: 3px; background-color: #00bcd4;}
