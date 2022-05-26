@@ -2,10 +2,9 @@ import styles from './WinNumbers.module.css';
 
 const WinNumbers = () => {
     const maxLengthCheck =(e) =>{
-        console.log(e.target.maxLength);
         if(e.target.value.length > e.target.maxLength){
             e.target.value = e.target.value.slice(0, e.target.maxLength);
-        }else{
+       }else{
             if(e.target.value > 50){
                 alert('45이하 숫자만 입력해주세요.');
                 e.target.value = '';
