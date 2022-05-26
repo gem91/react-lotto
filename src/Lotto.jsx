@@ -7,30 +7,24 @@ function App() {
 
   const [ price, setPrice ] = useState(null);
 
-  const [ randomArray, setRandomArray] = useState(
-      [1, 11, 42, 25,13, 24, 45]
-    );
+  const [ randomArray, setRandomArray] = useState([]);
+  const [ winner, setWinner ] = useState([])
+
 
   useEffect(()=>{
-
-    for( let ticket = 0; ticket < price/1000; ticket ++){
+    let numberItems = Array.from(Array(price/1000), () => new Array(7));
+    for( let ticket = 0; ticket < price/1000; ticket ++){ //장수만큼 돌리기
 
       for( let i = 0; i < 7; i ++){
-        // const newArray = new Array(7).fill().map( (i, idx) => idx)
-        let randomNumber = Math.floor(Math.random() * 45 ) + 1;
-      
-        if( randomNumber === randomArray){
-          randomNumber = Math.floor(Math.random() * 45 ) + 1;
-          return randomNumber;
-        }
-        setRandomArray(randomArray.push(randomNumber));
+        let random = Math.floor(Math.random() * 45 ) + 1;
+        numberItems[ticket][i] = random;
       }
     }
-   
+    setRandomArray(numberItems)
   }, [price])
 
 
-
+  
   return (
     <main>
       <h1>인생 한방, 행운의 🎱LOTTO</h1>
