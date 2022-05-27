@@ -1,0 +1,18 @@
+.popup{position: fixed; top: 50%; left: 50%; z-index: 999; padding: 40px; width: 500px; min-height: 500px; background-color: #fff;box-shadow: 5px 5px 15px -1px #00000052; transform: translate(-50%, -50%);}
+
+
+.closeButton{position: absolute; top: 15px; right: 15px; height:40px; width:40px; display:block;text-indent: -9999px;} 
+.closeButton:before, .closeButton:after{content:''; height:2px; width:35px; display:block; background:#555; border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px; position:absolute; top:16px; left:0px; transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);}
+.closeButton:after{transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);}
+
+
+
+.dimBG{content: ''; position:fixed;top:0;left:0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);}
+
+
+
+
+
+
+
+
