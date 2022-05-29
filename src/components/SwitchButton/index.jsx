@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SwitchButton.module.css';
 
-const SwitchButton = ({setToggleIs, toggleIs}) => {
+const SwitchButton = ({setToggleIs}) => {
     const onToggle = () => {
         const toggle = document.querySelector(".lotto-toggle-btn");
         toggle.classList.toggle('active')

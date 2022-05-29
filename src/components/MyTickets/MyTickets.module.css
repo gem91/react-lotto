@@ -6,7 +6,7 @@
 
 .myLottoTickets{margin-top: 8px;}
 .myLottoTickets.grid{display: block;}
-.myLottoTickets.list{display: flex;}
+.myLottoTickets.list{display: flex;flex-wrap: wrap;}
 .myLottoTickets li{display: flex; align-items: center; margin: 2px 0;}
 .myLottoTickets li span.lottoIcon{margin-right: 10px;font-size: 1.8rem;}
 .myLottoTickets li .myNumber .num{display: inline-block; margin-right: 3px; padding-top: 2px; width: 28px; height: 28px; font-size: .9rem; vertical-align: top; text-align: center; color: #fff; background-color: #7a7a7a; border-radius: 50%;}

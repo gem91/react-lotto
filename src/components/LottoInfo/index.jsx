@@ -3,14 +3,13 @@ import MyTickets from '../MyTickets';
 import WinNumbers from '../WinNumbers';
 
 
-const LottoInfo = ({setPrice, price, randomArray}) => {
+const LottoInfo = ({setPrice, price, randomArray, setPopupIs, setWinner, winner}) => {
       const [ toggleIs, setToggleIs ] = useState(false)
-      const tickets = price/1000; // 티켓 장수
      
     return(
         <>
             <MyTickets setPrice={setPrice} price={price} randomArray={randomArray} setToggleIs={setToggleIs} toggleIs={toggleIs} />
-            <WinNumbers />
+            <WinNumbers setPopupIs={setPopupIs} setWinner={setWinner} winner={winner} />
         </>
     )
 }
