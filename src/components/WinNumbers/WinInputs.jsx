@@ -1,13 +1,16 @@
 import React, { useRef } from "react";
 
-const WinInput = ({ setWinner, onPopup }) => {
-   const inputRef = useRef(0);
+const WinInput = ({setWinNumber, setWinNumbers, winNumbers}) => {
+   let inputRef = useRef(0);
+
+   // focus에서 나갈때 입력한 값 업데이트
+   const onblur = (e) => {
+      inputRef = e.target.value;
+   }
 
    const maxLengthCheck = (e) => {
       if (e.target.value.length > e.target.maxLength) {
          e.target.value = e.target.value.slice(0, e.target.maxLength);
-         const data = inputRef.current.value;
-         onPopup(data);
       } else {
          if (e.target.value > 46) {
             alert("45이하 숫자만 입력해주세요.");
@@ -18,13 +21,13 @@ const WinInput = ({ setWinner, onPopup }) => {
          }
       }
    };
+
    return (
-      <input
-         ref={inputRef}
-         maxLength="2"
-         type="number"
-         onInput={maxLengthCheck}
-      />
+      <>
+         { Object.keys(winNumbers).map( key => 
+             <input key={key} ref={inputRef} onInput={maxLengthCheck} onBlur={onblur} maxLength="2" type="number" />
+         )}
+      </>
    );
 };
 

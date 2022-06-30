@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import BasicButton from "../Button/BasicButton";
-import List from "./List/List";
 import styles from "./modal.module.css";
 
-const Modal = ({ setPopupIs }) => {
+const Modal = ({ setPopupIs, randomArray, winNumbers, howManySameNumbers }) => {
+   const [ count, setCount ] = useState(0);
+
+   const init = {
+      1 : {
+         일치갯수 : '3개',
+         당첨금 : 5000,
+         당첨갯수 : count,
+      },
+      2: {
+         일치갯수 : '4개',
+         당첨금 : 50000,
+         당첨갯수 : count,
+      },
+      3 : {
+         일치갯수 : '5개',
+         당첨금 : 1500000,
+         당첨갯수 : count,
+      },
+      4 : {
+         일치갯수 : '5개 + 보너스 볼',
+         당첨금 : 30000000,
+         당첨갯수 : count,
+      },
+      5: {
+         일치갯수 : '5개',
+         당첨금 : 2000000000,
+         당첨갯수 : count,
+      },
+   }
+
+  
+
    const onClose = () => {
       setPopupIs(false);
    };
@@ -19,7 +50,17 @@ const Modal = ({ setPopupIs }) => {
                      <th>당첨 갯수</th>
                   </tr>
                </thead>
-               <List />
+               <tbody>
+                  {
+                     Object.entries(init).map(([key, value]) => (
+                        <tr key={key}>
+                           <td>{value.일치갯수}</td>
+                           <td>{value.당첨금.toLocaleString()}</td>
+                           <td>{value.당첨갯수}개</td>
+                        </tr>
+                     ))
+                  }
+               </tbody>
                <tfoot>
                   <tr>
                      <td colSpan="3">당신의 총 수익률은 -100% 입니다.</td>
