@@ -21,7 +21,7 @@ function App() {
    });
 
    const [howManySameNumbers, setHowManySameNumbers] = useState([]);
- console.log('이거 궁금', howManySameNumbers);
+   console.log('이거 궁금', howManySameNumbers); // 같은 갯수
    // 팝업
    const [popupIs, setPopupIs] = useState(false);
 
@@ -48,17 +48,20 @@ function App() {
       for (let value of Object.values(winNumbers)) {
          if( value === 0 ) return;  // 값이 0일때 팝업창 안뜨게
        }
+       //값이 있으면 팝업창 열리게
       setPopupIs(true);
-      // getWinNums( winNumbers )
+      const test = getWinNums( winNumbers )
+      console.log(test);
+      return test;
    };
 
    //당첨금 비교
    const getWinNums = ( wins ) => {
       getArrays(randomArray,  Object.values(wins).map(win => Number(win)))
    }
-  const aaa =  getWinNums(winNumbers);
+//   const aaa =  getWinNums(winNumbers);
 
-  console.log(aaa);
+//   console.log('당첨번호' , aaa);
    
    const getArrays = ( random, winValue) => {
       for (let ticket = 0; ticket < price / 1000; ticket++) {
