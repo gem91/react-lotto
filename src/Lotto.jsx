@@ -6,9 +6,9 @@ import Modal from "./components/Modal";
 
 function App() {
    // 가격 측정
-   const [price, setPrice] = useState(null); 
+   const [price, setPrice] = useState(null);
    // 랜덤으로 배열구하기
-   const [randomArray, setRandomArray] = useState([]);   
+   const [randomArray, setRandomArray] = useState([]);
    // 당첨번호 숫자객체
    const [winNumbers, setWinNumbers] = useState({
       first: 0,
@@ -20,8 +20,10 @@ function App() {
       seventh: 0,
    });
 
-   const [howManySameNumbers, setHowManySameNumbers] = useState([]);
-   console.log('이거 궁금', howManySameNumbers); // 같은 갯수
+   const [같은숫자개수, set같은숫자개수] = useState([]);
+
+   useEffect(() => {}, [같은숫자개수]);
+   // console.log("이거 궁금", 같은숫자개수); // 같은 갯수
    // 팝업
    const [popupIs, setPopupIs] = useState(false);
 
@@ -45,36 +47,41 @@ function App() {
    }, [price]);
 
    const onPopup = () => {
+      // 당첨금을 돌려서 7개 숫자 중 0이면 경고창
       for (let value of Object.values(winNumbers)) {
-         if( value === 0 ) return;  // 값이 0일때 팝업창 안뜨게
-       }
-       //값이 있으면 팝업창 열리게
-      setPopupIs(true);
-      const test = getWinNums( winNumbers )
-      console.log(test);
-      return test;
+         // console.log(typeof value);
+         if (value === 0) {
+            alert("이번주의 당첨번호를 입력하세요");
+            return; // 값이 0일때 팝업창 안뜨게
+         } else {
+            //값이 있으면 팝업창 열리게
+            setPopupIs(true);
+            const test = getWinNums(winNumbers);
+            return test;
+         }
+      }
    };
 
    //당첨금 비교
-   const getWinNums = ( wins ) => {
-      getArrays(randomArray,  Object.values(wins).map(win => Number(win)))
-   }
-//   const aaa =  getWinNums(winNumbers);
+   const getWinNums = (wins) => {
+      당첨금_같은숫자개수_배열(
+         randomArray,
+         Object.values(wins).map((win) => Number(win))
+      );
+   };
 
-//   console.log('당첨번호' , aaa);
-   
-   const getArrays = ( random, winValue) => {
+   const 당첨금_같은숫자개수_배열 = (random, winValue) => {
+      const 당첨숫자배열 = [];
       for (let ticket = 0; ticket < price / 1000; ticket++) {
-         let sameNumber = random[ticket].filter( el => {
-            return winValue.includes(el)
-         })
-         let sameNumberLength = sameNumber.length
+         let 같은숫자 = random[ticket].filter((el) => {
+            return winValue.includes(el);
+         });
+         let 같은숫자몇개 = 같은숫자.length;
          // 같은갯수 배열로 푸시하기
-         let test = howManySameNumbers.push(sameNumberLength)
-         console.log(test);
-         // console.log(howManySameNumbers);
-      };
-   }
+         당첨숫자배열.push(같은숫자몇개);
+      }
+      set같은숫자개수(당첨숫자배열);
+   };
 
    // useEffect(() => {
    //    let numberItems = Array.from(Array(price / 1000), () => new Array(7));
@@ -120,7 +127,15 @@ function App() {
                />
             )}
 
-            {popupIs && <Modal setPopupIs={setPopupIs} randomArray={randomArray} winNumbers={winNumbers} howManySameNumbers={howManySameNumbers} />}
+            {popupIs && (
+               <Modal
+                  setPopupIs={setPopupIs}
+                  randomArray={randomArray}
+                  winNumbers={winNumbers}
+                  같은숫자개수={같은숫자개수}
+                  set같은숫자개수={set같은숫자개수}
+               />
+            )}
          </div>
       </main>
    );

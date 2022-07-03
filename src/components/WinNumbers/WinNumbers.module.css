@@ -37,7 +37,7 @@
    flex-direction: column;
    align-items: center;
 }
-.title{
+.title {
    display: flex;
    justify-content: space-between;
 }
@@ -47,4 +47,16 @@
    font-size: 0.85rem;
    font-weight: 500;
    text-align: center;
+}
+
+.defalutButton {
+   display: flex;
+   justify-content: center;
+   margin: 25px auto 0;
+   padding: 10px 20px;
+   color: #fff;
+   font-weight: 500;
+   font-size: 1rem;
+   border-radius: 3px;
+   background-color: #00bcd4;
 }

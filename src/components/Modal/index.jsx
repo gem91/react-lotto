@@ -1,43 +1,62 @@
 import React, { useState } from "react";
-import BasicButton from "../Button/BasicButton";
 import styles from "./modal.module.css";
 
-const Modal = ({ setPopupIs, randomArray, winNumbers, howManySameNumbers }) => {
-   const [ count, setCount ] = useState(0);
+const initMapper = {
+   3: {
+      개수: 3,
+      text: "3개다",
+      당첨금: 5000,
+   },
+   4: {
+      개수: 4,
+      text: "4개다",
+      당첨금: 50000,
+   },
+   5: {
+      개수: 5,
+      text: "5개다",
+      당첨금: 1500000,
+   },
+   6: {
+      개수: 6,
+      text: "6개다",
+      당첨금: 30000000,
+   },
+   7: {
+      개수: 7,
+      text: "7개다",
+      당첨금: 2000000000,
+   },
+};
 
-   const init = {
-      1 : {
-         일치갯수 : '3개',
-         당첨금 : 5000,
-         당첨갯수 : count,
-      },
-      2: {
-         일치갯수 : '4개',
-         당첨금 : 50000,
-         당첨갯수 : count,
-      },
-      3 : {
-         일치갯수 : '5개',
-         당첨금 : 1500000,
-         당첨갯수 : count,
-      },
-      4 : {
-         일치갯수 : '5개 + 보너스 볼',
-         당첨금 : 30000000,
-         당첨갯수 : count,
-      },
-      5: {
-         일치갯수 : '5개',
-         당첨금 : 2000000000,
-         당첨갯수 : count,
-      },
-   }
+const Modal = ({
+   setPopupIs,
+   randomArray,
+   winNumbers,
+   같은숫자개수,
+   set같은숫자개수,
+}) => {
+   const newMap = 같은숫자개수.reduce((prev, cur) => {
+      if (!prev.has(cur)) {
+         prev.set(cur, 1);
+      } else {
+         prev.set(cur, prev.get(cur) + 1);
+      }
+      return prev;
+   }, new Map());
 
-  
+   const aaa = Object.keys(initMapper).map((v) => initMapper[v]);
+   const test = aaa.map((el) => ({
+      ...el,
+      count: newMap.get(el.개수) || 0,
+   }));
+   console.log(test);
 
-   const onClose = () => {
+   const onReset = () => {
       setPopupIs(false);
+      set같은숫자개수([]);
    };
+
    return (
       <>
          <div className={styles.popup}>
@@ -51,15 +70,13 @@ const Modal = ({ setPopupIs, randomArray, winNumbers, howManySameNumbers }) => {
                   </tr>
                </thead>
                <tbody>
-                  {
-                     Object.entries(init).map(([key, value]) => (
-                        <tr key={key}>
-                           <td>{value.일치갯수}</td>
-                           <td>{value.당첨금.toLocaleString()}</td>
-                           <td>{value.당첨갯수}개</td>
-                        </tr>
-                     ))
-                  }
+                  {test.map((el, idx) => (
+                     <tr key={idx}>
+                        <td>{el.개수}</td>
+                        <td>{el.당첨금.toLocaleString()}</td>
+                        <td>{el.count}개</td>
+                     </tr>
+                  ))}
                </tbody>
                <tfoot>
                   <tr>
@@ -67,11 +84,13 @@ const Modal = ({ setPopupIs, randomArray, winNumbers, howManySameNumbers }) => {
                   </tr>
                </tfoot>
             </table>
-            <BasicButton title={"다시 시작하기"} />
+            <button className={styles.defalutButton} onClick={onReset}>
+               다시 시작하기
+            </button>
             <button
                className={styles.closeButton}
                type="button"
-               onClick={onClose}
+               onClick={onReset}
             >
                close
             </button>
